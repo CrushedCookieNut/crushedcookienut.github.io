@@ -4,6 +4,7 @@
     <link rel="icon" type="image/png" href="./pictures/ladybug.png"/>
     <title>Dobrodošli!</title>
     <link href="./style.css" rel="stylesheet">
+    <script src="script.js"></script>
 </head>
 <body>
     <div class="container">
@@ -29,6 +30,17 @@
             ter indie glasbo, ampak včasih paše tudi kak jazz ali pa klasična oz. rock tudi. Rada poslušam Taylor Swift (sue me), Olivio Rodrigo 
             (sue me once again), Gracie Abrams, Chase Atlantic, The Neighbourhood, beabadoobee in druge. Bom linkala moje playliste spodaj.
         </p>
+        <br>
+        <button id="login-button">Log in with Spotify</button>
+
+        <script>
+            document.getElementById('login-button').addEventListener('click', () => {
+                const scopes = 'user-read-currently-playing';
+                const authUrl = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&scope=${encodeURIComponent(scopes)}&redirect_uri=${encodeURIComponent(redirectUri)}`;
+                window.location.href = authUrl;
+            });
+        </script>
+
         <h2>IZKUŠNJE IN DELO</h2>
         <p>Imam izkušnje v delu v McDonald's-u v Novi Gorici ter trenutno delam v IC Elektroniki. Več lahko izveste v mojem življenjepisu.</p>
         <br>
