@@ -1,5 +1,5 @@
 const clientId = '564bd5771a5e43a0b04a5a65f2c20ea7';
-const clientSecret = 'b687f3af46f34a3b8e9f965727617a0c';
+const clientSecret = 'CLIENT_SECRET';
 const redirectUri = 'http://crushedcookienut.github.io/callback';
 
 async function getAccessToken() {
