@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const code = params.get('code');
 
     if (code) {
-        fetch(`https://scjosb5w7xc3irm66ff5wya3am0pzvnz.lambda-url.eu-north-1.on.aws/?code=${code}&redirect_uri=${encodeURIComponent(redirectUri)}`)
+        fetch(`https://duik6pekljpp3zruxb35izam7y0ivezv.lambda-url.eu-north-1.on.aws/?code=${code}&redirect_uri=${encodeURIComponent(redirectUri)}`)
             .then(response => response.json())
             .then(data => {
                 localStorage.setItem('spotify_access_token', data.access_token);
