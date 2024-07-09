@@ -1,6 +1,6 @@
 const clientId = '564bd5771a5e43a0b04a5a65f2c20ea7';
 const clientSecret = 'CLIENT_SECRET';
-const redirectUri = 'http://crushedcookienut.github.io/callback';
+const redirectUri = 'https://crushedcookienut.github.io/callback';
 
 async function getAccessToken() {
     const response = await fetch('https://accounts.spotify.com/api/token', {
