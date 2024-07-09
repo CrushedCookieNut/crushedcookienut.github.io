@@ -1,81 +1,49 @@
-const clientId = '564bd5771a5e43a0b04a5a65f2c20ea7';
-const clientSecret = 'CLIENT_SECRET';
-const redirectUri = 'https://crushedcookienut.github.io/callback';
+const clientId = '564bd5771a5e43a0b04a5a65f2c20ea7';  // Replace with your Spotify client ID
+            const redirectUri = 'https://crushedcookienut.github.io/callback';  // Your GitHub Pages URL
 
-async function getAccessToken() {
-    const response = await fetch('https://accounts.spotify.com/api/token', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
-        },
-        body: 'grant_type=client_credentials'
-    });
+            document.getElementById('login-button').addEventListener('click', () => {
+                const scopes = 'user-read-currently-playing';
+                const authUrl = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&scope=${encodeURIComponent(scopes)}&redirect_uri=${encodeURIComponent(redirectUri)}`;
+                window.location.href = authUrl;
+            });
 
-    const data = await response.json();
-    return data.access_token;
-}
+            function getCurrentlyPlaying() {
+                const accessToken = localStorage.getItem('spotify_access_token');
+                if (accessToken) {
+                    fetch('https://api.spotify.com/v1/me/player/currently-playing', {
+                        headers: {
+                            'Authorization': `Bearer ${accessToken}`
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.item) {
+                            const track = data.item.name;
+                            const artist = data.item.artists.map(artist => artist.name).join(', ');
+                            document.getElementById('currently-playing').textContent = `Currently Playing: ${track} by ${artist}`;
+                        } else {
+                            document.getElementById('currently-playing').textContent = 'Not currently playing any track.';
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+                } else {
+                    document.getElementById('currently-playing').textContent = 'Please log in to Spotify.';
+                }
+            }
 
-async function getCurrentlyPlaying(accessToken) {
-    const response = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
-        headers: {
-            'Authorization': 'Bearer ' + accessToken
-        }
-    });
+            // Check for the authorization code in the URL hash
+            const params = new URLSearchParams(window.location.hash.substring(1));
+            const code = params.get('code');
 
-    if (response.status === 204 || response.status > 400) {
-        return null;
-    }
-
-    const data = await response.json();
-    return data;
-}
-
-async function displayCurrentlyPlaying() {
-    let accessToken = localStorage.getItem('access_token');
-
-    if (!accessToken) {
-        const statusDiv = document.getElementById('spotify-status');
-        statusDiv.innerHTML = `<p>Please log in to see your currently playing track.</p>`;
-        return;
-    }
-
-    const currentlyPlaying = await getCurrentlyPlaying(accessToken);
-
-    const statusDiv = document.getElementById('spotify-status');
-
-    if (currentlyPlaying && currentlyPlaying.item) {
-        const track = currentlyPlaying.item;
-        statusDiv.innerHTML = `
-            <p>Track: ${track.name}</p>
-            <p>Artist: ${track.artists.map(artist => artist.name).join(', ')}</p>
-            <img src="${track.album.images[0].url}" alt="Album Art" style="width: 200px;">
-        `;
-    } else {
-        statusDiv.innerHTML = `<p>Not currently playing anything.</p>`;
-    }
-}
-
-document.addEventListener('DOMContentLoaded', displayCurrentlyPlaying);
-
-async function handleCallback() {
-    const params = new URLSearchParams(window.location.search);
-    const code = params.get('code');
-
-    if (code) {
-        const response = await fetch('https://accounts.spotify.com/api/token', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: `grant_type=authorization_code&code=${code}&redirect_uri=${redirectUri}&client_id=${clientId}&client_secret=${clientSecret}`
-        });
-
-        const data = await response.json();
-        localStorage.setItem('access_token', data.access_token);
-        window.history.pushState({}, document.title, "/");
-    }
-}
-
-handleCallback();
+            if (code) {
+                fetch(`https://scjosb5w7xc3irm66ff5wya3am0pzvnz.lambda-url.eu-north-1.on.aws/?code=${code}&redirect_uri=${encodeURIComponent(redirect_uri)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        localStorage.setItem('spotify_access_token', data.access_token);
+                        getCurrentlyPlaying();
+                    })
+                    .catch(error => console.error('Error:', error));
+            } else {
+                getCurrentlyPlaying();
+            }
 

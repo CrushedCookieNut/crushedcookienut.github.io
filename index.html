@@ -32,14 +32,8 @@
         </p>
         <br>
         <button id="login-button">Log in with Spotify</button>
-
-        <script>
-            document.getElementById('login-button').addEventListener('click', () => {
-                const scopes = 'user-read-currently-playing';
-                const authUrl = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&scope=${encodeURIComponent(scopes)}&redirect_uri=${encodeURIComponent(redirectUri)}`;
-                window.location.href = authUrl;
-            });
-        </script>
+        
+        <div id="currently-playing">Loading...</div>
 
         <h2>IZKUŠNJE IN DELO</h2>
         <p>Imam izkušnje v delu v McDonald's-u v Novi Gorici ter trenutno delam v IC Elektroniki. Več lahko izveste v mojem življenjepisu.</p>
@@ -106,3 +100,4 @@
     </div>
 </body>
 </html>
+
