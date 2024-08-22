@@ -32,7 +32,8 @@ jobs:
         echo "Escaped track info: $escaped_track_info"
 
         # Update the HTML file with track info
-        sed -i "s|<p id=\"scrobble-info\">.*</p>|<p id=\"scrobble-info\">$escaped_track_info</p>|" index.html
+        echo "<p id=\"scrobble-info\">$escaped_track_info</p>" > temp.html
+        mv temp.html index.html
 
     - name: Commit and Push changes
       run: |
