@@ -15,12 +15,12 @@ jobs:
 
     - name: Fetch and Process Track Info
       run: |
-        set -e
-        track_info=$(curl -s "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${{ secrets.LAST_FM_USERNAME }}&api_key=${{ secrets.LAST_FM_API_KEY }}&format=json&limit=1" |
+        # Fetch the current scrobbling track info directly from Last.fm API
+        track_info=$(curl -s "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${{ secrets.LASTFM_USERNAME }}&api_key=${{ secrets.LASTFM_API_KEY }}&format=json&limit=1" |
         jq -r '
-        .recenttracks.track[0] | 
-        "Currently Scrobbling: \(.artist["#text"]) - \(.name) (Album: \(.album["#text"]))"
-        ')
+          .recenttracks.track[0] | 
+          "Currently Scrobbling: \(.artist["#text"]) - \(.name) (Album: \(.album["#text"]))"'
+        )
 
         # Debugging: Output the raw track_info
         echo "Raw track info: $track_info"
@@ -32,22 +32,18 @@ jobs:
         echo "Escaped track info: $escaped_track_info"
 
         # Update the HTML file with track info
-        echo "<p id=\"scrobble-info\">$escaped_track_info</p>" > temp.html
-        mv temp.html index.html
-        
+        sed -i "s|<p id=\"scrobble-info\">.*</p>|<p id=\"scrobble-info\">$escaped_track_info</p>|" index.html
+
     - name: Commit and Push changes
       run: |
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
-
+        
         # Check if there are any changes
         if git diff --quiet --exit-code; then
           echo "No changes, skipping commit"
         else
           git add index.html
           git commit -m "Update scrobble info: ${escaped_track_info}"
-          git remote set-url origin https://${GITHUB_TOKEN}@github.com/CrushedCookieNut/crushedcookienut.github.io.git
-          git push origin master
+          git push
         fi
-      env:
-        GITHUB_TOKEN: ${{ secrets.GUTHIB_TOKEN }}
