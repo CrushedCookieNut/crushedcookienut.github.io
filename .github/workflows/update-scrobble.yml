@@ -36,6 +36,8 @@ jobs:
         mv temp.html index.html
 
     - name: Commit and Push changes
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
@@ -46,5 +48,6 @@ jobs:
         else
           git add index.html
           git commit -m "Update scrobble info: ${escaped_track_info}"
+          git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/CrushedCookieNut/crushedcookienut.github.io.git
           git push origin master
         fi
