@@ -31,7 +31,14 @@ jobs:
         # Debugging: Output the escaped track_info
         echo "Escaped track info: $escaped_track_info"
 
-        perl -i -pe 's/<p id="scrobble-info">.*<\/p>/<p id="scrobble-info">'"$escaped_track_info"'<\/p>/' index.html
+         awk -v track_info="$escaped_track_info" '
+        BEGIN { FS=OFS="<p id=\"scrobble-info\">"; }
+        /<p id="scrobble-info">/ {
+        $2 = track_info
+        }
+        { print }
+        ' index.html > index.html.tmp && mv index.html.tmp index.html
+
 
     - name: Commit and Push changes
       run: |
