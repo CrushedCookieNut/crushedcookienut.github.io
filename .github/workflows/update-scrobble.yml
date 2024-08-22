@@ -13,16 +13,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Fetch currently scrobbling track
+    - name: Fetch and Process Track Info
       run: |
-        curl -s "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${{ secrets.LASTFM_USERNAME }}&api_key=${{ secrets.LASTFM_API_KEY }}&format=json&limit=1" > scrobble.json
-    
-    - name: Update scrobble in HTML file
-      run: |
-        # Extract track info
-        track_info=$(jq -r '.recenttracks.track[0] | "Currently Scrobbling: \(.artist[\"#text\"]) - \(.name) (Album: \(.album[\"#text\"]))"' scrobble.json)
+        # Fetch the current scrobbling track info directly from Last.fm API
+        track_info=$(curl -s "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${{ secrets.LASTFM_USERNAME }}&api_key=${{ secrets.LASTFM_API_KEY }}&format=json&limit=1" |
+        jq -r '.recenttracks.track[0] | "Currently Scrobbling: \(.artist[\"#text\"]) - \(.name) (Album: \(.album[\"#text\"]))"')
 
-        # Update the HTML file
+        # Output the track info for debugging
+        echo "Track info: $track_info"
+
+        # Update the HTML file with track info
         sed -i 's|<p id="scrobble-info">.*</p>|<p id="scrobble-info">'"$track_info"' </p>|' index.html
 
     - name: Commit and Push changes
