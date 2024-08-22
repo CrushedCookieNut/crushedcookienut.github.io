@@ -46,5 +46,8 @@ jobs:
         else
           git add index.html
           git commit -m "Update scrobble info: ${escaped_track_info}"
-          git push --repo=https://github.com/CrushedCookieNut/crushedcookienut.github.io.git master
+          git remote add origin https://${GITHUB_TOKEN}@github.com/CrushedCookieNut/crushedcookienut.github.io.git
+          git push origin master
         fi
+      env:
+        GITHUB_TOKEN: ${{ secrets.GUTHIB_TOKEN }}
