@@ -17,13 +17,21 @@ jobs:
       run: |
         # Fetch the current scrobbling track info directly from Last.fm API
         track_info=$(curl -s "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${{ secrets.LASTFM_USERNAME }}&api_key=${{ secrets.LASTFM_API_KEY }}&format=json&limit=1" |
-        jq -r '.recenttracks.track[0] | "Currently Scrobbling: \(.artist[\"#text\"]) - \(.name) (Album: \(.album[\"#text\"]))"')
+        jq -r \
+          '.recenttracks.track[0] | \
+           "Currently Scrobbling: \(.artist[\"#text\"]) - \(.name) (Album: \(.album[\"#text\"]))"')
 
-        # Output the track info for debugging
-        echo "Track info: $track_info"
+        # Debugging: Output the raw track_info
+        echo "Raw track info: $track_info"
+
+        # Escape special characters
+        escaped_track_info=$(printf '%s' "$track_info" | sed 's/[&/\]/\\&/g')
+
+        # Debugging: Output the escaped track_info
+        echo "Escaped track info: $escaped_track_info"
 
         # Update the HTML file with track info
-        sed -i 's|<p id="scrobble-info">.*</p>|<p id="scrobble-info">'"$track_info"' </p>|' index.html
+        sed -i "s|<p id=\"scrobble-info\">.*</p>|<p id=\"scrobble-info\">$escaped_track_info</p>|" index.html
 
     - name: Commit and Push changes
       run: |
@@ -32,4 +40,3 @@ jobs:
         git add index.html
         git commit -m "Update scrobble [skip ci]"
         git push
-
