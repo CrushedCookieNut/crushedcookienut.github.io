@@ -46,7 +46,7 @@ jobs:
         else
           git add index.html
           git commit -m "Update scrobble info: ${escaped_track_info}"
-          git remote add origin https://${GITHUB_TOKEN}@github.com/CrushedCookieNut/crushedcookienut.github.io.git
+          git remote set-url origin https://${GITHUB_TOKEN}@github.com/CrushedCookieNut/crushedcookienut.github.io.git
           git push origin master
         fi
       env:
