@@ -15,11 +15,12 @@ jobs:
 
     - name: Fetch and Process Track Info
       run: |
-        # Fetch the current scrobbling track info directly from Last.fm API
-        track_info=$(curl -s "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${{ secrets.LASTFM_USERNAME }}&api_key=${{ secrets.LASTFM_API_KEY }}&format=json&limit=1" |
-        jq -r \
-          '.recenttracks.track[0] | \
-           "Currently Scrobbling: \(.artist[\"#text\"]) - \(.name) (Album: \(.album[\"#text\"]))"')
+        set -e
+        track_info=$(curl -s "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${{ secrets.LAST_FM_USERNAME }}&api_key=${{ secrets.LAST_FM_API_KEY }}&format=json&limit=1" |
+        jq -r '
+        .recenttracks.track[0] | 
+        "Currently Scrobbling: \(.artist["#text"]) - \(.name) (Album: \(.album["#text"]))"
+        ')
 
         # Debugging: Output the raw track_info
         echo "Raw track info: $track_info"
@@ -38,5 +39,5 @@ jobs:
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
         git add index.html
-        git commit -m "Update scrobble [skip ci]"
-        git push
+        git commit -m "Update scrobble info: ${escaped_track_info}"
+        git push origin main
