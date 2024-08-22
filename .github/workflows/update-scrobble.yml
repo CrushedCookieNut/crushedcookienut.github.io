@@ -46,18 +46,5 @@ jobs:
         else
           git add index.html
           git commit -m "Update scrobble info: ${escaped_track_info}"
-          git push https://${github.token}@github.com/CrushedCookieNut/crushedcookienut.github.io.git master
-        fi
-    - name: Commit and Push changes
-      run: |
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
-
-        # Check if there are any changes
-        if git diff --quiet --exit-code; then
-          echo "No changes, skipping commit"
-        else
-          git add index.html
-          git commit -m "Update scrobble info: ${escaped_track_info}"
           git push --repo=https://github.com/CrushedCookieNut/crushedcookienut.github.io.git master
         fi
