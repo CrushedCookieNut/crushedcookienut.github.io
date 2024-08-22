@@ -31,8 +31,7 @@ jobs:
         # Debugging: Output the escaped track_info
         echo "Escaped track info: $escaped_track_info"
 
-        # Update the HTML file with track info
-        sed -i "s|<p id=\"scrobble-info\">.*</p>|<p id=\"scrobble-info\">$escaped_track_info</p>|" index.html
+        perl -i -pe 's/<p id="scrobble-info">.*<\/p>/<p id="scrobble-info">'"$escaped_track_info"'<\/p>/' index.html
 
     - name: Commit and Push changes
       run: |
