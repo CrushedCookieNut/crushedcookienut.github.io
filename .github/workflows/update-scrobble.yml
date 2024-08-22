@@ -2,12 +2,8 @@ name: Update Scrobble
 
 on:
   schedule:
-    - cron: '*/10 * * * *'  # Run every 10 minutes
-  workflow_dispatch:  # Allow manual triggering
-
-permissions:
-  id-token: write
-  contents: write  # Allows pushing changes to the repository
+    - cron: '*/10 * * * *'  # Runs every 10 minutes
+  workflow_dispatch:  # Allows manual triggering
 
 jobs:
   update:
@@ -23,8 +19,11 @@ jobs:
     
     - name: Update scrobble in HTML file
       run: |
+        # Extract track info
         track_info=$(jq -r '.recenttracks.track[0] | "Currently Scrobbling: \(.artist[\"#text\"]) - \(.name) (Album: \(.album[\"#text\"]))"' scrobble.json)
-        sed -i 's|<p id="scrobble-info">.*</p>|<p id="scrobble-info">'"$track_info"'</p>|' index.html
+
+        # Update the HTML file
+        sed -i 's|<p id="scrobble-info">.*</p>|<p id="scrobble-info">'"$track_info"' </p>|' index.html
 
     - name: Commit and Push changes
       run: |
