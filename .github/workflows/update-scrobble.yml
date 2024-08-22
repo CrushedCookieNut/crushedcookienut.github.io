@@ -34,10 +34,7 @@ jobs:
         # Update the HTML file with track info
         echo "<p id=\"scrobble-info\">$escaped_track_info</p>" > temp.html
         mv temp.html index.html
-
     - name: Commit and Push changes
-      env:
-        GITHUB_TOKEN: ${{ secrets.GUTHIB_TOKEN }}
       run: |
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
@@ -48,6 +45,6 @@ jobs:
         else
           git add index.html
           git commit -m "Update scrobble info: ${escaped_track_info}"
-          git remote set-url origin https://github-actions:${GUTHIB_TOKEN}@github.com/CrushedCookieNut/crushedcookienut.github.io.git
+          git remote set-url origin https://github-actions:${github.token}@github.com/CrushedCookieNut/crushedcookienut.github.io.git
           git push origin master
         fi
