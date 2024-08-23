@@ -13,32 +13,47 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
     - name: Fetch and Process Track Info
       run: |
         # Fetch the current scrobbling track info directly from Last.fm API
         track_info=$(curl -s "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${{ secrets.LASTFM_USERNAME }}&api_key=${{ secrets.LASTFM_API_KEY }}&format=json&limit=1" |
         jq -r '
           .recenttracks.track[0] | 
-          "Currently Scrobbling: \(.artist["#text"]) - \(.name) (Album: \(.album["#text"]))"'
+          "Currently Scrobbling: \(.artist[\"#text\"]) - \(.name) (Album: \(.album[\"#text\"]))"'
         )
 
-        # Debugging: Output the raw track_info
-        echo "Raw track info: $track_info"
+        # Save the track_info to a file to be used by the Python script
+        echo "$track_info" > track_info.txt
 
-        # Escape special characters
-        escaped_track_info=$(printf '%s' "$track_info" | sed 's/[&/\]/\\&/g')
+    - name: Update HTML with Python Script
+      run: |
+        python3 << 'EOF'
+import re
 
-        # Debugging: Output the escaped track_info
-        echo "Escaped track info: $escaped_track_info"
+# Read the track info
+with open('track_info.txt', 'r') as file:
+    track_info = file.read().strip()
 
-         awk -v track_info="$escaped_track_info" '
-        BEGIN { FS=OFS="<p id=\"scrobble-info\">"; }
-        /<p id="scrobble-info">/ {
-        $2 = track_info
-        }
-        { print }
-        ' index.html > index.html.tmp && mv index.html.tmp index.html
+# Read the HTML file
+with open('index.html', 'r') as file:
+    html_content = file.read()
 
+# Update the HTML content
+updated_html = re.sub(
+    r'(<p id="scrobble-info">)(.*?)(</p>)', 
+    rf'\1{track_info}\3', 
+    html_content
+)
+
+# Write the updated HTML back to the file
+with open('index.html', 'w') as file:
+    file.write(updated_html)
+EOF
 
     - name: Commit and Push changes
       run: |
@@ -50,6 +65,6 @@ jobs:
           echo "No changes, skipping commit"
         else
           git add index.html
-          git commit -m "Update scrobble info: ${escaped_track_info}"
+          git commit -m "Update scrobble info: $(cat track_info.txt)"
           git push
         fi
