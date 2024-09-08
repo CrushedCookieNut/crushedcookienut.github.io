@@ -110,8 +110,8 @@ li.links {
 }
 
 .center {
-    display: grid;
-    place-items: center;
+    display: block;
+    margin: 0 auto;
 }
 
 /* Responsive Design */
