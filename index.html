@@ -94,7 +94,12 @@
         </ul>
         <br>
         <br>
-        <button type="button" onclick="window.open('./nesumljiv-gumb/')">Klikni me!</button>
+        <button type="button" id="myButton">Klikni me!</button>
+        <script type="text/javascript">
+            document.getElementById("myButton").onclick = function () {
+                location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+            };
+        </script>
     </div>
 </body>
 </html>
