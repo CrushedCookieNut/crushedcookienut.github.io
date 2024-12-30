@@ -1,115 +1,183 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="icon" type="image/png" href="./pictures/ladybug.png"/>
-    <title>Dobrodošli!</title>
-    <link href="./style.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        <div class="head">
-            <br>
+    <head>
+        <link rel="stylesheet" href="./style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Osebni portfelj</title>
+		<link rel="icon" type="image/png" href="./images/hello-kitty.png">
+    </head>
+    <body>
+        <div id="preloader">
+            <img src="./images/serial-experiments-lain.gif" alt="Loading...">
+        </div>
+        <div class="naslov">
             <h1>LAURA BAVCON</h1>
-            <br>
         </div>
-        <br>
-        <h2>O MENI</h2>
-        <p>Hojla!! Sem Laura, dijakinja 4. letnika Vegove Ljubljana (tehnik računalništva). Že od malega me zanimajo računalniki, 
-            kako delujejo, ipd. Na srečo me je moj oči (ki je elektrotehnik) vpeljal v ta svet in sem se odločila ga raziskovati naprej.
-        Zelo me zanima operacijski sistem Linux (ne nism cringe Arch user, Mint my beloved) ter programiranje in omrežja. 
-        Microsoft in Apple enjoyerji ste dobrodošli oditi s te strani >:D
-        </p>
-        <p>Seveda pa me zanimajo tudi druge stvari. V prostem času rada berem knjige ter včasih tudi kaj napišem (predvsem poezijo).
-            Moja najljubša pesnica je Sylvia Plath, ampak berem tudi Dostoyevskega, Kafko (oz. njega še moram, jojj), Camusa pa imam kup 
-            knjig od Hemingwaya, ki jih moram še prebrati. Seveda pa rada berem tudi romance kdaj (I'm just a girl!) in kriminalke ter 
-            fantazisjke zgodbe. Najbrž tudi še kaj, ne spomnim se.
-        </p>
-        <p>
-            Sem zelo intenziven poslušalec glasbe, kar pomeni da me boste vedno najdli s slušalkami (vsaj v žepu). Poslušam večinoma pop, r&b 
-            ter indie glasbo, ampak včasih paše tudi kak jazz ali pa klasična oz. rock tudi. Rada poslušam Taylor Swift (sue me), Olivio Rodrigo 
-            (sue me once again), Gracie Abrams, Chase Atlantic, The Neighbourhood, beabadoobee in druge. Bom linkala moje playliste spodaj.
-        </p>
-        <br>
-        <button type="button" class="center" id="lain">Lain</button>
-        <script type="text/javascript">
-            document.getElementById("lain").onclick = function () {
-                location.href = "./lain";
-            };
-        </script>
-        
-        <h2>IZKUŠNJE IN DELO</h2>
-        <p>Imam izkušnje v delu v McDonald's-u v Novi Gorici ter trenutno delam v IC Elektroniki. Več lahko izveste v mojem življenjepisu.</p>
-        <br>
-        <button type="submit" class="center" onclick="window.open('Laura_websiteCV.pdf')">ŽIVLJENJEPIS</button>
-        <br>
-        <p>Znam pa uporabljati različna orodja kot npr.:
-            <ul class="list">
-                <li>C/C++</li>
-                <li>Linux</li>
-                <li>Windows</li>
-                <li>Microsoft Office</li>
-                <li>HTML, CSS</li>
-                <li>SQL (MariaDB)</li>
-                <li>Arduino</li>
-                <li>Raspberry Pi</li>
+        <div class="nav">
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-list" id="nav-list">
+                <li class="nav-list"><a href="#osnovno">OSNOVNO</a></li>
+                <li class="nav-list"><a href="#glasba">GLASBA</a></li>
+                <li class="nav-list"><a href="#knjige">KNJIGE</a></li>
+                <li class="nav-list"><a href="#vescine">VESCINE</a></li>
+                <li class="nav-list"><a href="#izobrazba">IZOBRAZBA</a></li>
+                <li class="nav-list"><a href="#reference">REFERENCE</a></li>
+                <li class="nav-list tema" id="sprememba-teme">
+                    <img id="ikonica" src="./images/sun-icon-md-953167610.png" alt="Light Mode">
+                </li>
             </ul>
-        </p>
-        <h2>MOJA MUCA</h2>
-        <p>
-            Imela sem muco dolgo časa, ampak jo je mami oddala, zato bom dala tu slikice nje. Imela je preveč imen vendar večina jo pozna
-            kot Terorist (ne, nisem si jaz tega imena izmislila ampak moja sestra). Bila je zelo puhasta in luškana. Mislim, da je njen
-            nov dom v Divači, ampak nisem sigurna tako, da don't take my word for it.
-        </p>
-        <div class="cat">
-            <img src="./pictures/1719309533149.jpg">
-            <img src="./pictures/1719309533160.jpg">
-            <img src="./pictures/1719309533171.jpg">
-            <img src="./pictures/1719309533181.jpg">
+        </div>
+        <div class="main">             
+            <div class="osnovno" id="osnovno">
+                <h2>OSNOVNO</h2>
+                <div class="podosnovno">
+                    <img class="osnovno" alr="če ne pozabim popravit, bo tuki slika mene" src="./images/laura.jpg">
+                    <p class="osnovno">
+                        Pozdravljeni! Sem Laura Bavcon, dijakinja 4. letnika Elektrotehniško-računalniške strokovne šole in gimnazije Ljubljana,
+                        smer Tehnik računalništva, usmeritev koder.
+                        <br>
+                        <br>
+                        V prostem času rada berem, poslušam glasbo in občasno tudi programiram (šokantno, vem). Poslušam več različnih glasbenikov
+                        kot npr. beabadoobee, Wolf Alice, Taylor Swift, Olivia Rodrigo, Gracie Abrams, Chase Atlantic, The Neighbourhood, Ari Abdul,
+                        Bladee in drugi. Berem knjige različnih žanrov. Moja najljubša avtorica je Sylvia Plath. Imam tudi njen roman, Stekleni Zvon.
+                    </p>
+                </div>
+            </div>
+            <div class="glasba" id="glasba">
+                <h2>GLASBA</h2>
+                <div class="playlisti">
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/47iPUVgbKKCXCYZwKewtHs?utm_source=generator" 
+                    width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; 
+                    picture-in-picture" loading="lazy"></iframe>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7FODS5Bb5Uj5DqfJWXgqPS?utm_source=generator" 
+                    width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; 
+                    picture-in-picture" loading="lazy"></iframe>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/50T8CFonttUJV9CFLLlVbl?utm_source=generator" 
+                    width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; 
+                    picture-in-picture" loading="lazy"></iframe>
+                </div>
+                <div class="podglasba">
+                    <br>
+                    <p class="bea">
+                        Moja najljubša glasbenica trenutno je Beatrice Laus, znana pod imenom "beabadoobee". Izdala je 3 albume in veliko EPjev.
+                        Moj najljubši album, ki ga je ustvarila je Fake It Flowers, najljubši EP pa Loveworm. Ne morem se odločiti za najljubšo pesem.
+                        <br>
+                        <br>
+                        Doma imam 3 CDje njenih albumov ter kaseto enega EPja. This is How Tomorrow Moves CD je tudi podpisan.
+                        Imam kaseto EPja Patched Up. Imam tudi Limited Edition 7" Coffee gramofonsko ploščo.
+                    </p>
+                    <img class="bea" id="bea-zbirka" src="https://assets.vogue.com/photos/604a27ff4c0172df0ee8b3ee/master/w_1600%2Cc_limit/VO0421_Index_05.jpg">
+                    <dialog class="zbirka" id="zbirka">
+                        <img id="close" src="./images/close.png" alt="close-button">
+                        <img src="./images/PatchedUp.jpg" alt="Patched Up kaseta">
+                        <img src="./images/TIHTM.jpg" alt="This Is How Tomorrow Moves podpisan CD">
+                        <img src="./images/FakeItFlowers.jpg" alt="Fake It Flowers CD">
+                        <img src="./images/Beatopia.jpg" alt="Beatopia CD">
+                        <img src="./images/Coffee.jpg" alt="Coffee Limited Edition 7-inch gramofonska plošča">
+                    </dialog>
+                </div>
+                <button id="gumbek">Pokaži več</button>
+                <div class="podglasba wolf-alice" id="wolf-alice" style="display: none;">
+                    <img class="wolf-alice" src="https://i.pinimg.com/originals/49/7f/3f/497f3f6021ac64d585fd25601093f98f.jpg">
+                    <p class="wolf-alice">
+                        Pred kratkim sem začela poslušati britanski indie rock/alternative band Wolf Alice. Imajo 3 albume in 2 EPja.
+                        Moj najljubši album je trenutno Blue Weekend. Ne morem se naveličati pesmi Lipstick On The Glass.
+                        <br>
+                        <br>
+                        Zaenkrat še nimam fizičnih oblik njihove glasbe ampak imam namen kupiti vse 3 albume.
+                    </p>
+                </div>
+                <div class="podglasba gracie" style="display: none;">
+                    <p class="gracie">
+                        Rada poslušam tudi bolj umirjeno indie pop glasbo in izmed tega je moja najljubša definitivno Gracie Abrams.
+                        Izdala je 2 albuma, ter nekaj EPjev. Izmed vseh izdaj je moja najljubša This is What it Feels Like.
+                        <br>
+                        <br>
+                        Tudi njene glasbe nimam v fizični obliki vendar nameravam kupiti This is What it Feels Like vinilko, minor vinilko
+                        ter oba CDja njenih albumov.
+                    </p>
+                    <img class="gracie" src="https://celebmafia.com/wp-content/uploads/2023/01/gracie-abrams-saint-laurent-menswear-show-at-paris-fashion-week-01-17-2023-2.jpg">
+                </div>
+            </div>
+            <div class="knjige" id="knjige">
+                <h2>KNJIGE</h2>
+                <div class="podknjige">
+                    <div class=" podknjige addie-larue">
+                        <img class="addie-larue" src="https://media.titanbooks.com/catalog/products/AddieLaRue_PB_cvr.jpg">
+                        <p class="addie-larue">
+                            Moja najljubša knjiga. Govori o ženski Addie LaRue, ki naredi kupčijo s hudičem, da lahko živi za vedno, 
+                            vendar se je nihče ne more zapomniti. Nekega dne pa se pojavi en gospod, ki si jo.
+                        </p>
+                    </div>
+                </div>
+                <button id="gumbek2">Pokaži več</button>
+                 <div class="podknjige ifilwh" id="ifilwh" style="display: none;">
+                    <p class="ifilwh">
+                        Moja 2. najljubša knjiga. Govori o otrocih, ki imajo različne kronične bolezni in, kako se spopadajo
+                        s tem. Komaj čakam naslednjo knjigo te avtorice.
+                    </p>
+                    <img class="ifilwh" src="https://cdn.kobo.com/book-images/13cda642-f1fa-4377-8dbd-f119c7cefe62/1200/1200/False/i-fell-in-love-with-hope-1.jpg">
+                </div>
+                <div class="podknjige nlmg" style="display: none;">
+                    <img class="nlmg" src="https://static.faber.co.uk/wp-content/uploads/2022/09/Never-Let-Me-Go.jpg">
+                    <p class="nlmg">
+                        Za maturo sem prebirača Never Let Me Go, ki se mi je tudi zdela precej zanimiva. Sicer se mi je prva polovica
+                        še kar vlekla, vendar sem jo uspešno prebrala. Do mature jo bom definitivno še enkrat.
+                    </p>
+                </div>
+                <div class="podknjige punpun" style="display: none;">
+                    <p class="punpun">
+                        Prebrala sem tudi zbirko mang Goodnight Punpun. Zdela se mi je zelo zanimiva, vendar je večini ne
+                        priporočam v branje.
+                    </p>
+                    <img class="punpun" src="https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781421586205/goodnight-punpun-vol-1-9781421586205_hr.jpg">
+                </div>
+            </div>
+            <div class="vescine" id="vescine">
+                <h2>VESCINE</h2>
+                <ul>
+                    <li>C/C++</li>
+                    <li>HTML, CSS, JS</li>
+                    <li>Microsoft Office (Word, Excel, PowerPoint, Access,...)</li>
+                    <li>Linux (Mint, Arch), Windows</li>
+                    <li>SQL (MariaDB)</li>
+                    <li>PHP</li>
+                    <li>Osnove CISCO</li>
+                </ul>
+            </div>
+            <div class="izobrazba" id="izobrazba">
+                <h2>IZOBRAZBA</h2>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td><img src="./images/sturje.jpg"></td>
+                            <td><img src="./images/vipava.jpg"></td>
+                            <td><img src="./images/vegova.jpg"></td>
+                        </tr>
+                        <tr>
+                            <td><p>Osnovna šola Šturje, Ajdovščina (1. - 8. razred)</p></td>
+                            <td><p>Osnovna šola Draga Bajca Vipava, Vipava (9. razred)</p></td>
+                            <td><p>Elektrotehniško-računalniška strokovna šola in gimnazija Ljubljana</p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="reference" id="reference">
+                <h2>REFERENCE</h2>
+                <ul>
+                    <li><a href="https://mcdonalds.si/kontakt">Alpe-Panon d.o.o. - McDonald's Nova Gorica</a></li>
+                    <li><a href="https://www.ic-elect.si/">IC Elektronika d.o.o. Ljubljana</a></li>
+                </ul>
+            </div>
         </div>
         <br>
-        <h2>O TEJ SPLETNI STRANI</h2>
-        <p>
-            Hosted by GitHub Pages... še vedno AMPAK imam domeno zdej :D (tud stara deluje ampak ta je better).
-        </p>
-        <br>
-        <h2>LINKI</h2>
-        <ul class="links">
-            <li class="links"><button type="submit" onclick="window.open('https://www.instagram.com/laurica.mavrica_/')">Instagram</button></li>
-            <li class="links"><button type="submit" onclick="window.open('https://github.com/CrushedCookieNut')">GitHub</button></li>
-            <li class="links"><button type="submit" onclick="window.open('https://www.pinterest.com/imbercookie_o/')">Pinterest</button></li>
-            <li class="links"><button type="submit" onclick="window.open('https://open.spotify.com/user/63eptisyk5d0h7e8zkpgujfo6?si=07ede5b0e7424068')">Spotify</button></li>
-        </ul>
-        <br>
-        <h3>PLAYLISTI</h3>
-        <div class="spotify">
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/47iPUVgbKKCXCYZwKewtHs?utm_source=generator" 
-            frameBorder="0" allowfullscreen="" width="300" height="380" allowtransparency="true"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7FODS5Bb5Uj5DqfJWXgqPS?utm_source=generator" 
-            frameBorder="0" allowfullscreen="" width="300" height="380" allowtransparency="true"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/50T8CFonttUJV9CFLLlVbl?utm_source=generator" 
-            frameBorder="0" allowfullscreen="" width="300" height="380" allowtransparency="true"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-        <br>
-        <h3>LJUDJE, KI JIH POZNAM</h3>
-        <ul class="list">
-            <li><a href="https://muhvic.com/">Gašper Muhvič</a></li>
-            <li><a href="https://vujic.computers.si/">Luka Vujić</a></li>
-        </ul>
-        <br>
-        <br>
-        <button type="button" class="center" id="myButton">Klikni me!</button>
-        <script type="text/javascript">
-            document.getElementById("myButton").onclick = function () {
-                location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-            };
-        </script>
-        <br>
-        <br>
-        <br>
-    </div>
-</body>
+        <script src="./script.js"></script>
+    </body>
 </html>
-
