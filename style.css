@@ -202,12 +202,17 @@ td > p {
 
 .playlisti {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    gap: 10px;
 }
 
 iframe {
     padding: 10px;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
 }
 
 #bea-zbirka:hover {
@@ -312,6 +317,10 @@ img {
         font-size: 18px;
     }
 
+    iframe {
+        height: 500px;
+    }
+
     .hamburger {
         display: flex;
     }
@@ -354,5 +363,15 @@ img {
     button {
         padding: 10px;
         font-size: 18px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .playlisti {
+        gap: 20px;
+    }
+
+    iframe {
+        width: 30%;
     }
 }
