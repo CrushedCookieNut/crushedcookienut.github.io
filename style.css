@@ -1,0 +1,124 @@
+@font-face {
+    font-family: para;
+    src: url(./fonts/FruitDays-vmY5E.otf);
+}
+
+h1 {
+    font-family: para;
+    font-size: 100px;
+    text-align: center;
+    margin: 0;
+    padding: 30px;
+}
+
+h2, a.music {
+    font-family: para;
+    font-size: 80px;
+    text-align: center;
+}
+
+p {
+    font-family: para;
+    font-size: 25px;
+}
+
+li {
+    font-family: para;
+    font-size: 25px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    font-family: para;
+    font-size: 1.5rem;
+}
+
+body {
+    background-color: pink;
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    background-color: white;
+    box-shadow: 10px 5px 5px black;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.main {
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+.github, .instagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.socials {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+    justify-content: center;
+}
+
+.socials div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+img.pusheen {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img.github, img.instagram {
+    width: 200px;
+    height: 200px;
+}
+
+a.github, a.instagram {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.carousel {
+    width: 780px;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.carousel img {
+    width: 250px;
+    height: auto;
+    border-radius: 8px;
+}
+
+
+.arrow {
+    font-size: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+}

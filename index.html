@@ -1,9 +1,100 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>prihaja kmalu, trust</title>
+        <title>Laurina stran vesolja</title>
+        <link rel="stylesheet" href="./style.css">
     </head>
     <body>
-        <p>V izdelavi!</p>
+        <div class="title">
+            <h1>DOBRODOSLI!</h1>
+        </div>
+        <div class="main">
+            <div class="intro">
+                <p>Ojlaa! Sem Laura in dobrodosli na moji spletni strani (se opravicujem za tako roza barvno paleto (ne, se ne)).
+                    Obcasno me boste nasli na predavanjih na Pedagoski fakulteti Univerze v Ljubljani, kjer studiram na programu
+                    dvopredmetni ucitelj, smer matematika-racunalnistvo. Pred tem sem uspesno pridobila srednjesolsko izobrazbo
+                    na Vegovi v Ljubljani, kjer sem postala tehnica racunalnistva (baje naj bi zdaj znala nekaj o racunalnikih?).
+                    Ampakkk, naj vas vse to ne zavede, namrec nisem zabar (in tudi uzaljena bom, ce bi to mislil kdo). Raje imam domneve
+                    kot so, ce sem mogoce iz Afrike ali Indije!
+                    <br>
+                    <br>
+                    V prostem casu rada pocivam ali pa cvekam s kolegi. Ko pa se odlocim biti zanimiva, bom brala knjige in pisala kaksne
+                    poezije. Rada tudi vzamem v roke mojo digitalno kamero ter se pretvarjam, da sem profesionalni umetniski fotograf 
+                    (in hkrati model) ali pa specem kaksno pecivo. Moji drugi nenavadni hobiji so poslusanje glasbe, zbiranje caja in 
+                    svec ter branje spletne strani slovenskih zeleznic (ali ste vedeli, da sta najvisja in najnizja postaja obe na primorskem?).
+                </p>
+            </div>
+            <div class="pusheen">
+                <img class="pusheen" src="./images/pusheen.gif">
+            </div>
+            <div class="projects">
+                <h2>PROJEKTI</h2>
+                <ul>
+                    <li>ta spletna stran</li>
+                    <li>Resevanje Amazosnkega Pragozda - igrica pri predmetu RPA v 3. letniku (C++, s pomocjo knjiznice SDL)</li>
+                    <li>Before the coffee gets cold! - igrica za maturo (Unity, C#)</li>
+                    <li>ImberBot - preprost Discord bot (JavaScript)</li>
+                </ul>
+            </div>
+            <div class="links">
+                <h2>POVEZAVE</h2>
+                <div class="socials">
+                    <div class="github">
+                        <img class="github" src="./images/github.png">
+                        <a href="https://github.com/CrushedCookieNut">GitHub</a>
+                    </div>
+                    <div class="instagram">
+                        <img class="instagram" src="./images/instagram.png">
+                        <a href="https://www.instagram.com/laurica.mavrica_/">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="tech">
+                <h2>MOJA OPREMA</h2>
+                <p>Uporabljam Lenovo IdeaPad prenosnik kot moj glavni racunalnik. Imam se Lenovo IdeaTab tablico
+                    za zapiske pri predavanjih. Digitalna kamera, ki jo uporabljam je Sony CyberShot DSC-S2100. Imam tudi
+                    Olympus film kamero doma, vendar jo zaradi visokih stroskov razvijanja analogne fotografije ne uporabljam.
+                    V planu je nabava Raspberry Pija za gostovanje te spletne strani, do takrat pa se zahvaljujem GitHub pages!
+                </p>
+            </div>
+            <div class="music">
+                <h2><a class="music" href="https://www.last.fm/user/CrushedCookie">GLASBA</a></h2>
+                <iframe data-testid="embed-iframe" style="border-radius:12px; margin-right: 10px;" 
+                src="https://open.spotify.com/embed/artist/35l9BRT7MXmM8bv2WDQiyB?utm_source=generator&theme=0" 
+                width="32%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; 
+                encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe data-testid="embed-iframe" style="border-radius:12px; margin-right: 10px;" 
+                src="https://open.spotify.com/embed/artist/2xvtxDNInKDV4AvGmjw6d1?utm_source=generator&theme=0" 
+                width="32%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; 
+                encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe data-testid="embed-iframe" style="border-radius:12px" 
+                src="https://open.spotify.com/embed/artist/25jJ6vyXwTRa0e6XCcdR6U?utm_source=generator&theme=0" 
+                width="32%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; 
+                encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <h2>GALERIJA</h2>
+            <div class="carousel-container">
+                <button class="arrow left" onclick="moveLeft()">‹</button>
+
+                <div class="carousel">
+                    <div class="carousel-track">
+                        <img src="./images/DSC01496.jpg">
+                        <img src="./images/DSC01497.jpg">
+                        <img src="./images/DSC01536.jpg">
+                        <img src="./images/DSC01542.jpg">
+                        <img src="./images/DSC01555.jpg">
+                        <img src="./images/DSC01557.jpg">
+                        <img src="./images/DSC01860.jpg">
+                        <img src="./images/DSC01904.jpg">
+                        <img src="./images/DSC01905.jpg">
+                        <img src="./images/DSC01978.JPG">
+                        <img src="./images/DSC01986.JPG">
+                    </div>
+                </div>
+
+                <button class="arrow right" onclick="moveRight()">›</button>
+            </div>
+        </div>
+        <script src="main.js"></script>
     </body>
 </html>
